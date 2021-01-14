@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Retrieve tag
         run: |
-          DOCKER_IMAGE=aminvakil/green-tunnel
+          DOCKER_IMAGE=quay.io/aminvakil/green-tunnel
           if [[ $GITHUB_REF == refs/tags/* ]]; then
             VERSION=${GITHUB_REF#refs/tags/}
           fi
@@ -31,4 +31,4 @@ jobs:
         with:
           file: Dockerfile
           push: true
-          tags: quay.io/${TAGS}
+          tags: ${TAGS}
