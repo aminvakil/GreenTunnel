@@ -27,6 +27,7 @@ jobs:
           DOCKER_IMAGE=aminvakil/green-tunnel
           if [[ $GITHUB_REF == refs/tags/* ]]; then
             VERSION=${GITHUB_REF#refs/tags/}
+          fi
           TAGS="${DOCKER_IMAGE}:${VERSION}"
           echo "TAGS=$TAGS" >> $GITHUB_ENV
       - uses: actions/checkout@master
