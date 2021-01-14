@@ -17,9 +17,8 @@ jobs:
             VERSION=${GITHUB_REF#refs/tags/}
           fi
           TAGS="${DOCKER_IMAGE}:${VERSION}"
-          echo "TAGS=$TAGS" >> $GITHUB_ENV
-          echo $TAGS
-      - uses: actions/checkout@master
+          echo ::set-output name=tags::${TAGS}
+      - uses: actions/checkout@quay_test
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
       - name: Login to DockerHub
