@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Retrieve tag
+        id: retrieve
         run: |
           DOCKER_IMAGE=quay.io/aminvakil/green-tunnel
           if [[ $GITHUB_REF == refs/tags/* ]]; then
@@ -32,4 +33,4 @@ jobs:
         with:
           file: Dockerfile
           push: true
-          tags: ${TAGS}
+          tags: ${{ steps.retrieve.outputs.tags }}
